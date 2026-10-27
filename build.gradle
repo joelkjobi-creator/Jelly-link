@@ -1,0 +1,34 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.jellylink.client'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.jellylink.client"
+        // Strictly API 16 (Android 4.1 Jelly Bean) with ZERO AndroidX/Jetpack dependencies
+        // so DEX bytecode stays tiny, fast, and 100% compatible with Samsung Jelly Bean ROMs
+        minSdk 16
+        targetSdk 22
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // Intentionally empty: uses pure Android API 16 framework classes (Activity, SurfaceView,
+    // MediaCodec API 16 synchronous buffers, TCP Sockets) to run on Android 4.1 / 4.2 / 4.3.
+}
